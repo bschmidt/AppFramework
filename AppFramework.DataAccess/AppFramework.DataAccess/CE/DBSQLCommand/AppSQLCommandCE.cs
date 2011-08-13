@@ -6,21 +6,25 @@ using System.Data.SqlServerCe;
 using AppFramework.DataAccess.CE.BaseSQL;
 using AppFramework.DataAccess.CE.AppDBConnection;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace AppFramework.DataAccess.CE.DBSQLCommand
 {
     class AppSQLCommandCE : BaseSQLFuncCE
     {
         public SqlCeCommand CommandRef { get; set; }
+        List<SqlParameter> ParmList;
 
-        public AppSQLCommandCE(string cConnectionString, string cSQL)
+        public AppSQLCommandCE(string cConnectionString, string cSQL, List<SqlParameter> Parms)
             : base(cConnectionString, cSQL)
         {
+            this.ParmList = Parms;
         }
 
-        public AppSQLCommandCE(ConnectionInfo ConnInfo, string cSQL)
+        public AppSQLCommandCE(ConnectionInfo ConnInfo, string cSQL, List<SqlParameter> Parms)
             : base(ConnInfo, cSQL)
         {
+            this.ParmList = Parms;
         }
 
         public override void Initialize()
@@ -39,7 +43,10 @@ namespace AppFramework.DataAccess.CE.DBSQLCommand
 
         public override void Open()
         {
-
+            if (this.oSQLConnection.State == ConnectionState.Closed)
+            {
+                this.oSQLConnection.Open();
+            }
         }
     }
 }

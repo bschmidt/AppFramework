@@ -12,15 +12,18 @@ namespace AppFramework.DataAccess.Full.DBSQLCommand
     class AppSQLCommand: BaseSQLFunc
     {
         public SqlCommand CommandRef { get; set; }
+        List<SqlParameter> ParmList;
 
-        public AppSQLCommand(string cConnectionString, string cSQL, int iTimeout)
+        public AppSQLCommand(string cConnectionString, string cSQL, int iTimeout, List<SqlParameter> Parms)
             : base(cConnectionString, cSQL, iTimeout)
         {
+            this.ParmList = Parms;
         }
 
-        public AppSQLCommand(ConnectionInfo ConnInfo, string cSQL, int iTimeout)
+        public AppSQLCommand(ConnectionInfo ConnInfo, string cSQL, int iTimeout, List<SqlParameter> Parms)
             : base(ConnInfo, cSQL, iTimeout)
         {
+            this.ParmList = Parms;
         }
 
         public override void Initialize()
@@ -30,6 +33,7 @@ namespace AppFramework.DataAccess.Full.DBSQLCommand
 
             this.CommandRef.CommandType = CommandType.Text;
             this.CommandRef.CommandText = this.SQL;
+            this.CommandRef.Parameters.AddRange(this.ParmList.ToArray());
             this.CommandRef.CommandTimeout = this.Timeout;
 
             this.oSQLConnection.ConnectionString = this.oConnInfo.ConnectionString;
@@ -40,7 +44,10 @@ namespace AppFramework.DataAccess.Full.DBSQLCommand
 
         public override void Open()
         {
-            
+            if (this.oSQLConnection.State == ConnectionState.Closed)
+            {
+                this.oSQLConnection.Open();
+            }
         }
     }
 }

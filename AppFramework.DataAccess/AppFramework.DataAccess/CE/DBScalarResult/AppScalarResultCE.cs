@@ -4,18 +4,19 @@ using System.Linq;
 using System.Text;
 using AppFramework.DataAccess.CE.DBSQLCommand;
 using AppFramework.DataAccess.CE.AppDBConnection;
+using System.Data.SqlClient;
 
 namespace AppFramework.DataAccess.CE.DBScalarResult
 {
     class AppScalarResultCE : AppSQLCommandCE
     {
-        public AppScalarResultCE(string cConnectionString, string cSQL)
-            : base(cConnectionString, cSQL)
+        public AppScalarResultCE(string cConnectionString, string cSQL, List<SqlParameter> Parms)
+            : base(cConnectionString, cSQL, Parms)
         {
         }
 
-        public AppScalarResultCE(ConnectionInfo ConnInfo, string cSQL)
-            : base(ConnInfo, cSQL)
+        public AppScalarResultCE(ConnectionInfo ConnInfo, string cSQL, List<SqlParameter> Parms)
+            : base(ConnInfo, cSQL, Parms)
         {
         }
 

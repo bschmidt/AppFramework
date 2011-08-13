@@ -56,6 +56,46 @@ namespace AppFramework.DataAccess.Full.AppDBConnection
         {
             return this.GetDataTable(cSQL, DB, Timeout);
         }
+
+        public DataTable DataTable(string cSQL, List<SqlParameter> Parms)
+        {
+            return this.GetDataTable(cSQL, "", DefaultTimeout, Parms);
+        }
+
+        public DataTable DataTable(string cSQL, int Timeout, List<SqlParameter> Parms)
+        {
+            return this.GetDataTable(cSQL, "", Timeout, Parms);
+        }
+
+        public DataTable DataTable(string cSQL, string DB, List<SqlParameter> Parms)
+        {
+            return this.GetDataTable(cSQL, DB, DefaultTimeout, Parms);
+        }
+
+        public DataTable DataTable(string cSQL, string DB, int Timeout, List<SqlParameter> Parms)
+        {
+            return this.GetDataTable(cSQL, DB, Timeout, Parms);
+        }
+
+        public DataTable DataTable(string cSQL, SqlParameter SingleParm)
+        {
+            return this.GetDataTable(cSQL, "", DefaultTimeout, SingleParm);
+        }
+
+        public DataTable DataTable(string cSQL, int Timeout, SqlParameter SingleParm)
+        {
+            return this.GetDataTable(cSQL, "", Timeout, SingleParm);
+        }
+
+        public DataTable DataTable(string cSQL, string DB, SqlParameter SingleParm)
+        {
+            return this.GetDataTable(cSQL, DB, DefaultTimeout, SingleParm);
+        }
+
+        public DataTable DataTable(string cSQL, string DB, int Timeout, SqlParameter SingleParm)
+        {
+            return this.GetDataTable(cSQL, DB, Timeout, SingleParm);
+        }
         #endregion
 
         #region "SQLCommand"
@@ -77,6 +117,46 @@ namespace AppFramework.DataAccess.Full.AppDBConnection
         public SqlCommand SQLCommand(string SQL)
         {
             return this.GetSQLComand(SQL, "", DefaultTimeout);
+        }
+
+        public SqlCommand SQLCommand(string SQL, string DB, int Timeout, List<SqlParameter> Parms)
+        {
+            return this.GetSQLComand(SQL, DB, Timeout, Parms);
+        }
+
+        public SqlCommand SQLCommand(string SQL, string DB, List<SqlParameter> Parms)
+        {
+            return this.GetSQLComand(SQL, DB, DefaultTimeout, Parms);
+        }
+
+        public SqlCommand SQLCommand(string SQL, int Timeout, List<SqlParameter> Parms)
+        {
+            return this.GetSQLComand(SQL, "", Timeout, Parms);
+        }
+
+        public SqlCommand SQLCommand(string SQL, List<SqlParameter> Parms)
+        {
+            return this.GetSQLComand(SQL, "", DefaultTimeout, Parms);
+        }
+
+        public SqlCommand SQLCommand(string SQL, string DB, int Timeout, SqlParameter SingleParm)
+        {
+            return this.GetSQLComand(SQL, DB, Timeout, SingleParm);
+        }
+
+        public SqlCommand SQLCommand(string SQL, string DB, SqlParameter SingleParm)
+        {
+            return this.GetSQLComand(SQL, DB, DefaultTimeout, SingleParm);
+        }
+
+        public SqlCommand SQLCommand(string SQL, int Timeout, SqlParameter SingleParm)
+        {
+            return this.GetSQLComand(SQL, "", Timeout, SingleParm);
+        }
+
+        public SqlCommand SQLCommand(string SQL, SqlParameter SingleParm)
+        {
+            return this.GetSQLComand(SQL, "", DefaultTimeout, SingleParm);
         }
         #endregion
 
@@ -100,6 +180,46 @@ namespace AppFramework.DataAccess.Full.AppDBConnection
         {
             return this.GetRunCommand(SQL, "", DefaultTimeout);
         }
+
+        public int RunCommand(string SQL, string DB, int Timeout, SqlParameter SingleParm)
+        {
+            return this.GetRunCommand(SQL, DB, Timeout, SingleParm);
+        }
+
+        public int RunCommand(string SQL, string DB, SqlParameter SingleParm)
+        {
+            return this.GetRunCommand(SQL, DB, DefaultTimeout, SingleParm);
+        }
+
+        public int RunCommand(string SQL, int Timeout, SqlParameter SingleParm)
+        {
+            return this.GetRunCommand(SQL, "", Timeout, SingleParm);
+        }
+
+        public int RunCommand(string SQL, SqlParameter SingleParm)
+        {
+            return this.GetRunCommand(SQL, "", DefaultTimeout, SingleParm);
+        }
+
+        public int RunCommand(string SQL, string DB, int Timeout, List<SqlParameter> Parms)
+        {
+            return this.GetRunCommand(SQL, DB, Timeout, Parms);
+        }
+
+        public int RunCommand(string SQL, string DB, List<SqlParameter> Parms)
+        {
+            return this.GetRunCommand(SQL, DB, DefaultTimeout, Parms);
+        }
+
+        public int RunCommand(string SQL, int Timeout, List<SqlParameter> Parms)
+        {
+            return this.GetRunCommand(SQL, "", Timeout, Parms);
+        }
+
+        public int RunCommand(string SQL, List<SqlParameter> Parms)
+        {
+            return this.GetRunCommand(SQL, "", DefaultTimeout, Parms);
+        }
         #endregion
 
         #region "ScalarResult"
@@ -122,16 +242,73 @@ namespace AppFramework.DataAccess.Full.AppDBConnection
         {
             return this.GetScalarResult(SQL, "", DefaultTimeout);
         }
+
+        public object ScalarResult(string SQL, string DB, int Timeout, List<SqlParameter> Parms)
+        {
+            return this.GetScalarResult(SQL, DB, Timeout, Parms);
+        }
+
+        public object ScalarResult(string SQL, string DB, List<SqlParameter> Parms)
+        {
+            return this.GetScalarResult(SQL, DB, DefaultTimeout, Parms);
+        }
+
+        public object ScalarResult(string SQL, int Timeout, List<SqlParameter> Parms)
+        {
+            return this.GetScalarResult(SQL, "", Timeout, Parms);
+        }
+
+        public object ScalarResult(string SQL, List<SqlParameter> Parms)
+        {
+            return this.GetScalarResult(SQL, "", DefaultTimeout, Parms);
+        }
+
+        public object ScalarResult(string SQL, string DB, int Timeout, SqlParameter SingleParm)
+        {
+            return this.GetScalarResult(SQL, DB, Timeout, SingleParm);
+        }
+
+        public object ScalarResult(string SQL, string DB, SqlParameter SingleParm)
+        {
+            return this.GetScalarResult(SQL, DB, DefaultTimeout, SingleParm);
+        }
+
+        public object ScalarResult(string SQL, int Timeout, SqlParameter SingleParm)
+        {
+            return this.GetScalarResult(SQL, "", Timeout, SingleParm);
+        }
+
+        public object ScalarResult(string SQL, SqlParameter SingleParm)
+        {
+            return this.GetScalarResult(SQL, "", DefaultTimeout, SingleParm);
+        }
         #endregion
 
         #region "Private Functions"
         private DataTable GetDataTable(string SQL, string DB, int Timeout)
         {
+            return this.GetDataTable(SQL, DB, Timeout, new List<SqlParameter>());
+        }
+    
+        private DataTable GetDataTable(string SQL, string DB, int Timeout, SqlParameter SingleParm)
+        {
+            var Parms = new List<SqlParameter>();
+
+            if (SingleParm != null)
+            {
+                Parms.Add(SingleParm);
+            }
+
+            return this.GetDataTable(SQL, DB, Timeout, Parms);
+        }
+
+        private DataTable GetDataTable(string SQL, string DB, int Timeout, List<SqlParameter> Parms)
+        {
             AppDataTable oTable;
             DataTable tblGetData;
 
             oConnInfo.InitialDB = DB;
-            oTable = new AppDataTable(oConnInfo, SQL, Timeout);
+            oTable = new AppDataTable(oConnInfo, SQL, Timeout, Parms);
 
             oTable.Open();
             tblGetData = oTable.TableRef;
@@ -144,8 +321,31 @@ namespace AppFramework.DataAccess.Full.AppDBConnection
         {
             AppSQLCommand oCommand;
 
-            oCommand = new AppSQLCommand(new ConnectionInfo(this.oConnInfo.ConnectionString, DB), SQL, Timeout);
-            oCommand.Open();
+            oCommand = new AppSQLCommand(new ConnectionInfo(this.oConnInfo.ConnectionString, DB), SQL, Timeout, new List<SqlParameter>());
+
+            return oCommand.CommandRef;
+        }
+
+        private SqlCommand GetSQLComand(string SQL, string DB, int Timeout, List<SqlParameter> Parms)
+        {
+            AppSQLCommand oCommand;
+
+            oCommand = new AppSQLCommand(new ConnectionInfo(this.oConnInfo.ConnectionString, DB), SQL, Timeout, Parms);
+
+            return oCommand.CommandRef;
+        }
+
+        private SqlCommand GetSQLComand(string SQL, string DB, int Timeout, SqlParameter SingleParm)
+        {
+            AppSQLCommand oCommand;
+            var Parms = new List<SqlParameter>();
+
+            if (SingleParm != null)
+            {
+                Parms.Add(SingleParm);
+            }
+
+            oCommand = new AppSQLCommand(new ConnectionInfo(this.oConnInfo.ConnectionString, DB), SQL, Timeout, Parms);
 
             return oCommand.CommandRef;
         }
@@ -154,17 +354,58 @@ namespace AppFramework.DataAccess.Full.AppDBConnection
         {
             AppScalarResult oScalarResult;
 
-            oScalarResult = new AppScalarResult(new ConnectionInfo(this.oConnInfo.ConnectionString, DB), SQL, Timeout);
+            oScalarResult = new AppScalarResult(new ConnectionInfo(this.oConnInfo.ConnectionString, DB), SQL, Timeout, new List<SqlParameter>());
+
+            return oScalarResult.Execute();
+        }
+
+        private object GetScalarResult(string SQL, string DB, int Timeout, SqlParameter SingleParm)
+        {
+            AppScalarResult oScalarResult;
+            var Parms = new List<SqlParameter>();
+
+            if (SingleParm != null)
+            {
+                Parms.Add(SingleParm);
+            }
+
+            oScalarResult = new AppScalarResult(new ConnectionInfo(this.oConnInfo.ConnectionString, DB), SQL, Timeout, Parms);
+
+            return oScalarResult.Execute();
+        }
+
+        private object GetScalarResult(string SQL, string DB, int Timeout, List<SqlParameter> Parms)
+        {
+            AppScalarResult oScalarResult;
+
+            oScalarResult = new AppScalarResult(new ConnectionInfo(this.oConnInfo.ConnectionString, DB), SQL, Timeout, Parms);
 
             return oScalarResult.Execute();
         }
 
         private int GetRunCommand(string SQL, string DB, int Timeout)
         {
+            return this.GetRunCommand(SQL, DB, Timeout, new List<SqlParameter>());
+        }
+
+        private int GetRunCommand(string SQL, string DB, int Timeout, SqlParameter SingleParm)
+        {
+            var Parms = new List<SqlParameter>();
+
+            if (SingleParm != null)
+            {
+                Parms.Add(SingleParm);
+            }
+
+            return this.GetRunCommand(SQL, DB, Timeout, Parms);
+        }
+
+        private int GetRunCommand(string SQL, string DB, int Timeout, List<SqlParameter> Parms)
+        {
             int iReturnVal = 0;
             AppSQLCommand oCommand;
 
-            oCommand = new AppSQLCommand(new ConnectionInfo(this.oConnInfo.ConnectionString, DB), SQL, Timeout);
+            oCommand = new AppSQLCommand(new ConnectionInfo(this.oConnInfo.ConnectionString, DB), SQL, Timeout, Parms);
 
             oCommand.Open();
             iReturnVal = oCommand.CommandRef.ExecuteNonQuery();

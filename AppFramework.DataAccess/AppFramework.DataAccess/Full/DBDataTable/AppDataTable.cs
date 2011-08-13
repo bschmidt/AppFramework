@@ -12,15 +12,18 @@ namespace AppFramework.DataAccess.Full.DBDataTable
     class AppDataTable : BaseSQLFunc
     {
         public DataTable TableRef { get; set; }
+        List<SqlParameter> ParmList;
 
-        public AppDataTable(string cConnectionString, string cSQL, int iTimeout)
+        public AppDataTable(string cConnectionString, string cSQL, int iTimeout, List<SqlParameter> Parms)
             : base(cConnectionString, cSQL, iTimeout)
         {
+            this.ParmList = Parms;
         }
 
-        public AppDataTable(ConnectionInfo ConnInfo, string cSQL, int iTimeout)
+        public AppDataTable(ConnectionInfo ConnInfo, string cSQL, int iTimeout, List<SqlParameter> Parms)
             : base(ConnInfo, cSQL, iTimeout)
         {
+            this.ParmList = Parms;
         }
 
         public override void Initialize()
@@ -35,6 +38,7 @@ namespace AppFramework.DataAccess.Full.DBDataTable
 
             oCommand.Connection = this.oSQLConnection;
             oCommand.CommandText = this.SQL;
+            oCommand.Parameters.AddRange(this.ParmList.ToArray());
             oCommand.CommandTimeout = this.Timeout;
 
             oSQLAdapter.SelectCommand = oCommand;
