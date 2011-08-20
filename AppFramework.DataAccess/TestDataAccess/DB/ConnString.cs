@@ -16,5 +16,10 @@ namespace TestDataAccess
         {
             return "C:\\Program Files\\Microsoft SQL Server Compact Edition\\v3.5\\Samples\\Northwind.sdf";
         }
+
+        public static string HomeDBFile()
+        {
+            return "C:\\Program Files\\Informed Home\\Data\\Home.sdf";
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using AppFramework.DataAccess.CE.AppDBConnection;
 using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 
 namespace AppFramework.DataAccess.CE.BaseSQL
 {
@@ -11,22 +12,27 @@ namespace AppFramework.DataAccess.CE.BaseSQL
     {
         protected ConnectionInfo oConnInfo;
         protected SqlCeConnection oSQLConnection;
+        protected List<SqlCeParameter> ParmList;
 
         public string ConnectionString { get; set; }
         public string SQL { get; set; }
 
-        public BaseSQLFuncCE(string cConnString, string cSQL)
+        public BaseSQLFuncCE(string cConnString, string cSQL, List<SqlCeParameter> Parms)
         {
             oConnInfo = new ConnectionInfo(cConnString);
             SQL = cSQL;
 
+            this.ParmList = Parms;
+
             this.Initialize();
         }
 
-        public BaseSQLFuncCE(ConnectionInfo ConnInfo, string cSQL)
+        public BaseSQLFuncCE(ConnectionInfo ConnInfo, string cSQL, List<SqlCeParameter> Parms)
         {
             oConnInfo = ConnInfo;
             SQL = cSQL;
+
+            this.ParmList = Parms;
 
             this.Initialize();
         }

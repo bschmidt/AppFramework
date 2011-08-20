@@ -12,18 +12,15 @@ namespace AppFramework.DataAccess.Full.DBSQLCommand
     class AppSQLCommand: BaseSQLFunc
     {
         public SqlCommand CommandRef { get; set; }
-        List<SqlParameter> ParmList;
 
         public AppSQLCommand(string cConnectionString, string cSQL, int iTimeout, List<SqlParameter> Parms)
-            : base(cConnectionString, cSQL, iTimeout)
+            : base(cConnectionString, cSQL, iTimeout, Parms)
         {
-            this.ParmList = Parms;
         }
 
         public AppSQLCommand(ConnectionInfo ConnInfo, string cSQL, int iTimeout, List<SqlParameter> Parms)
-            : base(ConnInfo, cSQL, iTimeout)
+            : base(ConnInfo, cSQL, iTimeout, Parms)
         {
-            this.ParmList = Parms;
         }
 
         public override void Initialize()

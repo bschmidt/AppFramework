@@ -41,22 +41,22 @@ namespace AppFramework.DataAccess.CE.AppDBConnection
             return this.GetDataTable(cSQL, Timeout);
         }
 
-        public DataTable DataTable(string cSQL, SqlParameter SingleParm)
+        public DataTable DataTable(string cSQL, SqlCeParameter SingleParm)
         {
             return this.GetDataTable(cSQL, DefaultTimeout, SingleParm);
         }
 
-        public DataTable DataTable(string cSQL, int Timeout, SqlParameter SingleParm)
+        public DataTable DataTable(string cSQL, int Timeout, SqlCeParameter SingleParm)
         {
             return this.GetDataTable(cSQL, Timeout, SingleParm);
         }
 
-        public DataTable DataTable(string cSQL, List<SqlParameter> Parms)
+        public DataTable DataTable(string cSQL, List<SqlCeParameter> Parms)
         {
             return this.GetDataTable(cSQL, DefaultTimeout, Parms);
         }
 
-        public DataTable DataTable(string cSQL, int Timeout, List<SqlParameter> Parms)
+        public DataTable DataTable(string cSQL, int Timeout, List<SqlCeParameter> Parms)
         {
             return this.GetDataTable(cSQL, Timeout, Parms);
         }
@@ -73,22 +73,22 @@ namespace AppFramework.DataAccess.CE.AppDBConnection
             return this.GetSQLComand(SQL, DefaultTimeout);
         }
 
-        public SqlCeCommand SQLCommand(string SQL, int Timeout, List<SqlParameter> Parms)
+        public SqlCeCommand SQLCommand(string SQL, int Timeout, List<SqlCeParameter> Parms)
         {
             return this.GetSQLComand(SQL, Timeout, Parms);
         }
 
-        public SqlCeCommand SQLCommand(string SQL, List<SqlParameter> Parms)
+        public SqlCeCommand SQLCommand(string SQL, List<SqlCeParameter> Parms)
         {
             return this.GetSQLComand(SQL, DefaultTimeout, Parms);
         }
 
-        public SqlCeCommand SQLCommand(string SQL, SqlParameter SingleParm)
+        public SqlCeCommand SQLCommand(string SQL, SqlCeParameter SingleParm)
         {
             return this.GetSQLComand(SQL, DefaultTimeout, SingleParm);
         }
 
-        public SqlCeCommand SQLCommand(string SQL, int Timeout, SqlParameter SingleParm)
+        public SqlCeCommand SQLCommand(string SQL, int Timeout, SqlCeParameter SingleParm)
         {
             return this.GetSQLComand(SQL, Timeout, SingleParm);
         }
@@ -105,22 +105,22 @@ namespace AppFramework.DataAccess.CE.AppDBConnection
             return this.GetRunCommand(SQL, DefaultTimeout);
         }
 
-        public int RunCommand(string SQL, int Timeout, SqlParameter SingleParm)
+        public int RunCommand(string SQL, int Timeout, SqlCeParameter SingleParm)
         {
             return this.GetRunCommand(SQL, Timeout, SingleParm);
         }
 
-        public int RunCommand(string SQL, SqlParameter SingleParm)
+        public int RunCommand(string SQL, SqlCeParameter SingleParm)
         {
             return this.GetRunCommand(SQL, DefaultTimeout, SingleParm);
         }
 
-        public int RunCommand(string SQL, int Timeout, List<SqlParameter> Parms)
+        public int RunCommand(string SQL, int Timeout, List<SqlCeParameter> Parms)
         {
             return this.GetRunCommand(SQL, Timeout, Parms);
         }
 
-        public int RunCommand(string SQL, List<SqlParameter> Parms)
+        public int RunCommand(string SQL, List<SqlCeParameter> Parms)
         {
             return this.GetRunCommand(SQL, DefaultTimeout, Parms);
         }
@@ -137,22 +137,22 @@ namespace AppFramework.DataAccess.CE.AppDBConnection
             return this.GetScalarResult(SQL, DefaultTimeout);
         }
 
-        public object ScalarResult(string SQL, int Timeout, SqlParameter SingleParm)
+        public object ScalarResult(string SQL, int Timeout, SqlCeParameter SingleParm)
         {
             return this.GetScalarResult(SQL, Timeout, SingleParm);
         }
 
-        public object ScalarResult(string SQL, SqlParameter SingleParm)
+        public object ScalarResult(string SQL, SqlCeParameter SingleParm)
         {
             return this.GetScalarResult(SQL, DefaultTimeout, SingleParm);
         }
 
-        public object ScalarResult(string SQL, int Timeout, List<SqlParameter> Parms)
+        public object ScalarResult(string SQL, int Timeout, List<SqlCeParameter> Parms)
         {
             return this.GetScalarResult(SQL, Timeout, Parms);
         }
 
-        public object ScalarResult(string SQL, List<SqlParameter> Parms)
+        public object ScalarResult(string SQL, List<SqlCeParameter> Parms)
         {
             return this.GetScalarResult(SQL, DefaultTimeout, Parms);
         }
@@ -161,12 +161,12 @@ namespace AppFramework.DataAccess.CE.AppDBConnection
         #region "Private Functions"
         private DataTable GetDataTable(string SQL, int Timeout)
         {
-            return this.GetDataTable(SQL, Timeout, new List<SqlParameter>());
+            return this.GetDataTable(SQL, Timeout, new List<SqlCeParameter>());
         }
 
-        private DataTable GetDataTable(string SQL, int Timeout, SqlParameter SingleParm)
+        private DataTable GetDataTable(string SQL, int Timeout, SqlCeParameter SingleParm)
         {
-            var Parms = new List<SqlParameter>();
+            var Parms = new List<SqlCeParameter>();
 
             if (SingleParm != null)
             {
@@ -176,7 +176,7 @@ namespace AppFramework.DataAccess.CE.AppDBConnection
             return this.GetDataTable(SQL, Timeout, Parms);
         }
 
-        private DataTable GetDataTable(string SQL, int Timeout, List<SqlParameter> Parms)
+        private DataTable GetDataTable(string SQL, int Timeout, List<SqlCeParameter> Parms)
         {
             AppDataTableCE oTable;
             DataTable tblGetData;
@@ -192,12 +192,12 @@ namespace AppFramework.DataAccess.CE.AppDBConnection
 
         private SqlCeCommand GetSQLComand(string SQL, int Timeout)
         {
-            return this.GetSQLComand(SQL, Timeout, new List<SqlParameter>());
+            return this.GetSQLComand(SQL, Timeout, new List<SqlCeParameter>());
         }
 
-        private SqlCeCommand GetSQLComand(string SQL, int Timeout, SqlParameter SingleParm)
+        private SqlCeCommand GetSQLComand(string SQL, int Timeout, SqlCeParameter SingleParm)
         {
-            var Parms = new List<SqlParameter>();
+            var Parms = new List<SqlCeParameter>();
 
             if (SingleParm != null)
             {
@@ -207,7 +207,7 @@ namespace AppFramework.DataAccess.CE.AppDBConnection
             return this.GetSQLComand(SQL, Timeout, Parms);
         }
 
-        private SqlCeCommand GetSQLComand(string SQL, int Timeout, List<SqlParameter> Parms)
+        private SqlCeCommand GetSQLComand(string SQL, int Timeout, List<SqlCeParameter> Parms)
         {
             AppSQLCommandCE oCommand;
 
@@ -225,12 +225,12 @@ namespace AppFramework.DataAccess.CE.AppDBConnection
 
         private object GetScalarResult(string SQL, int Timeout)
         {
-            return this.GetScalarResult(SQL, Timeout, new List<SqlParameter>());
+            return this.GetScalarResult(SQL, Timeout, new List<SqlCeParameter>());
         }
 
-        private object GetScalarResult(string SQL, int Timeout, SqlParameter SingleParm)
+        private object GetScalarResult(string SQL, int Timeout, SqlCeParameter SingleParm)
         {
-            var Parms = new List<SqlParameter>();
+            var Parms = new List<SqlCeParameter>();
 
             if (SingleParm != null)
             {
@@ -240,7 +240,7 @@ namespace AppFramework.DataAccess.CE.AppDBConnection
             return this.GetScalarResult(SQL, Timeout, Parms);
         }
 
-        private object GetScalarResult(string SQL, int Timeout, List<SqlParameter> Parms)
+        private object GetScalarResult(string SQL, int Timeout, List<SqlCeParameter> Parms)
         {
             AppScalarResultCE oScalarResult;
             object Result;
@@ -255,12 +255,12 @@ namespace AppFramework.DataAccess.CE.AppDBConnection
 
         private int GetRunCommand(string SQL, int Timeout)
         {
-            return GetRunCommand(SQL, Timeout, new List<SqlParameter>());
+            return GetRunCommand(SQL, Timeout, new List<SqlCeParameter>());
         }
 
-        private int GetRunCommand(string SQL, int Timeout, SqlParameter SingleParm)
+        private int GetRunCommand(string SQL, int Timeout, SqlCeParameter SingleParm)
         {
-            var Parms = new List<SqlParameter>();
+            var Parms = new List<SqlCeParameter>();
 
             if (SingleParm != null)
             {
@@ -270,7 +270,7 @@ namespace AppFramework.DataAccess.CE.AppDBConnection
             return GetRunCommand(SQL, Timeout, Parms);
         }
 
-        private int GetRunCommand(string SQL, int Timeout, List<SqlParameter> Parms)
+        private int GetRunCommand(string SQL, int Timeout, List<SqlCeParameter> Parms)
         {
             int iReturnVal = 0;
             AppSQLCommandCE oCommand;

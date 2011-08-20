@@ -5,6 +5,7 @@ using System.Text;
 using AppFramework.DataAccess.CE.BaseSQL;
 using System.Data.SqlServerCe;
 using AppFramework.DataAccess.CE.AppDBConnection;
+using System.Data.SqlClient;
 
 namespace AppFramework.DataAccess.CE.DBConnection
 {
@@ -13,12 +14,12 @@ namespace AppFramework.DataAccess.CE.DBConnection
         public SqlCeConnection ConnectionRef { get; set; }
 
         public AppSQLConnection(string cConnectionString, string cSQL)
-            : base(cConnectionString, cSQL)
+            : base(cConnectionString, cSQL, new List<SqlCeParameter>())
         {
         }
 
         public AppSQLConnection(ConnectionInfo ConnInfo, string cSQL)
-            : base(ConnInfo, cSQL)
+            : base(ConnInfo, cSQL, new List<SqlCeParameter>())
         {
         }
 

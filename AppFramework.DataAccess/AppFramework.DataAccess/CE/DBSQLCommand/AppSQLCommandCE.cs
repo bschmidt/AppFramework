@@ -13,18 +13,15 @@ namespace AppFramework.DataAccess.CE.DBSQLCommand
     class AppSQLCommandCE : BaseSQLFuncCE
     {
         public SqlCeCommand CommandRef { get; set; }
-        List<SqlParameter> ParmList;
 
-        public AppSQLCommandCE(string cConnectionString, string cSQL, List<SqlParameter> Parms)
-            : base(cConnectionString, cSQL)
+        public AppSQLCommandCE(string cConnectionString, string cSQL, List<SqlCeParameter> Parms)
+            : base(cConnectionString, cSQL, Parms)
         {
-            this.ParmList = Parms;
         }
 
-        public AppSQLCommandCE(ConnectionInfo ConnInfo, string cSQL, List<SqlParameter> Parms)
-            : base(ConnInfo, cSQL)
+        public AppSQLCommandCE(ConnectionInfo ConnInfo, string cSQL, List<SqlCeParameter> Parms)
+            : base(ConnInfo, cSQL, Parms)
         {
-            this.ParmList = Parms;
         }
 
         public override void Initialize()
@@ -33,6 +30,10 @@ namespace AppFramework.DataAccess.CE.DBSQLCommand
             this.oSQLConnection = new SqlCeConnection();
 
             this.CommandRef.CommandType = CommandType.Text;
+            if (this.ParmList.Count > 0)
+            {
+                this.CommandRef.Parameters.AddRange(this.ParmList.ToArray());
+            }
             this.CommandRef.CommandText = this.SQL;
 
             this.oSQLConnection.ConnectionString = this.oConnInfo.ConnectionString;

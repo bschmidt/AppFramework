@@ -13,18 +13,15 @@ namespace AppFramework.DataAccess.CE.DBDataTable
     class AppDataTableCE : BaseSQLFuncCE
     {
         public DataTable TableRef { get; set; }
-        List<SqlParameter> ParmList;
 
-        public AppDataTableCE(string cConnectionString, string cSQL, List<SqlParameter> Parms)
-            : base(cConnectionString, cSQL)
+        public AppDataTableCE(string cConnectionString, string cSQL, List<SqlCeParameter> Parms)
+            : base(cConnectionString, cSQL, Parms)
         {
-            this.ParmList = Parms;
         }
 
-        public AppDataTableCE(ConnectionInfo ConnInfo, string cSQL, List<SqlParameter> Parms)
-            : base(ConnInfo, cSQL)
+        public AppDataTableCE(ConnectionInfo ConnInfo, string cSQL, List<SqlCeParameter> Parms)
+            : base(ConnInfo, cSQL, Parms)
         {
-            this.ParmList = Parms;
         }
 
         public override void Initialize()
@@ -39,7 +36,10 @@ namespace AppFramework.DataAccess.CE.DBDataTable
 
             oCommand.Connection = this.oSQLConnection;
             oCommand.CommandText = this.SQL;
-            oCommand.Parameters.AddRange(this.ParmList.ToArray());
+            if (this.ParmList.Count > 0)
+            {
+                oCommand.Parameters.AddRange(this.ParmList.ToArray());
+            }
 
             oSQLAdapter.SelectCommand = oCommand;
             oSQLAdapter.Fill(this.TableRef);
